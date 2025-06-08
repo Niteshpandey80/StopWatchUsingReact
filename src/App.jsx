@@ -1,9 +1,18 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 const App = () => {
    const [time , setTime ] = useState(0);
+   const stopwatchRef = useRef(0)
+   const intervalRef = useRef(null);
+
    const handleStart=()=>{
-    
+       
+   }
+   const handlePause=()=>{
+
+   }
+   const handleReset=()=>{
+
    }
   return (
     <div className='stopwatch'>
