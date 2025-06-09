@@ -4,26 +4,29 @@
     const [time , setTime ] = useState(0);
     const stopwatchRef = useRef(0)
     const intervalRef = useRef(null);
+    const [now , setNow] = useState(null)
 
     const handleStart=()=>{
-        stopwatchRef.current = new Date().getTime();
+        setTime(Date.now());
+        setNow(Date.now());
+        stopwatchRef.current = new Date().getTime(); 
         intervalRef.current = setInterval(()=>{
           setTime(new Date().getTime()-stopwatchRef.current);
         },10) 
     }
     const handlePause=()=>{
-
+      clearInterval(intervalRef.current);
     }
+    let timePassed = (time - null) / 1000;
     const handleReset=()=>{
 
     }
     const formatTime =()=>{
-       const ms  = Math.floor((time % 1000)/10 );
-       
+       const ms  = Math.floor((time % 1000)/10 );    
     }
     return (
       <div className='stopwatch'>
-        <span className='time'>{time}</span>
+        <span className='time'>{timePassed.toFixed(3)}</span>
         <div>
           <button  onClick={handleStart}>Start</button>
           <button onClick={handlePause}>Pause</button>
